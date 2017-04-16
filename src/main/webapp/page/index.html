@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval'; object-src 'none'; img-src 'self' data:">
+        <title>Insert title here</title>
+        <script src="js/jquery-1.8.2.js" type="text/javascript"></script>
+        <script src="js/jquery-ui.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+
+        
+        $(document).ready(function(){
+
+            $("#t1").val("hello");
+            
+            $("#login").click(function(){
+                alert($("#username").val());
+
+                $.post( "user/login.do",
+                {
+                      username: $("#username").val(),
+                      password: $("#password").val()
+                },
+                function(aa){
+                    $("#content").val(aa);
+                    location.href = "page/showUser.jsp";
+                },
+                "json"
+                );
+        
+                
+            });
+            
+
+        });
+        
+        
+        </script>
+</head>
+
+<body>
+    <p id="p1">
+    <input type="text" id="username"/>
+    <input type="text" id="password"/>
+    <input type="text" id="content"/>
+    
+    <input type="button" id="login" value="login"/>
+    <input type="button" id="ajaxlogin" value="ajaxlogin"/>
+    <input type="button" id="b3" value="dom"/>
+    </p>
+    
+    <p id="p2">
+    
+    </p>
+</body>
+</html>

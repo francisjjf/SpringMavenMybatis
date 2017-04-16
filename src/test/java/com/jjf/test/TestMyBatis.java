@@ -15,8 +15,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;  
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;  
   
-import com.alibaba.fastjson.JSON;  
-import com.jjf.pojo.User;  
+import com.alibaba.fastjson.JSON;
+import com.jjf.pojo.Company;
+import com.jjf.pojo.User;
+import com.jjf.service.ICompanyService;
 import com.jjf.service.IUserService;  
   
 @RunWith(SpringJUnit4ClassRunner.class)     //表示继承了SpringJUnit4ClassRunner类  
@@ -24,31 +26,25 @@ import com.jjf.service.IUserService;
   
 public class TestMyBatis {  
     private static Logger logger = Logger.getLogger(TestMyBatis.class);  
-//  private ApplicationContext ac = null;  
     @Autowired  
-    private IUserService userService = null;  
-  
-//  @Before  
-//  public void before() {  
-//      ac = new ClassPathXmlApplicationContext("applicationContext.xml");  
-//      userService = (IUserService) ac.getBean("userService");  
-//  }  
+    private IUserService userService ;  
+    
+    @Autowired  
+    private ICompanyService companyService;  
+
   
     @Test  
     public void test1() {  
-        User user = new User();
-        user.setUserName("xxx");
-        user.setPassword("xxx");
-        user.setAge(10);
+
 //        userService.insertUser(user);  
         
         List<User> users = userService.getAllUsers();
+        System.out.println(JSON.toJSONString(users));
         
-        User user2 = userService.getUserById(2);
+        List<Company> companies = companyService.getAllCompanies();
+        System.out.println(JSON.toJSONString(companies));
         
         // System.out.println(user.getUserName());  
         // logger.info("值："+user.getUserName());  
-        logger.info(JSON.toJSONString(users));  
-        logger.info(JSON.toJSONString(user2));
     }  
 }  

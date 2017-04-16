@@ -2,9 +2,9 @@ package com.jjf.dao;
 
 import java.util.List;
 
-import com.jjf.pojo.User;
+import com.jjf.pojo.Company;
 
-public interface IUserDao {
+public interface ICompanyDao {
 //    int deleteByPrimaryKey(Integer id);
 //
 //    
@@ -18,5 +18,5 @@ public interface IUserDao {
 //
 //    int updateByPrimaryKey(User record);
     
-    List<User> selectAll();
+    List<Company> selectAll();
 }
